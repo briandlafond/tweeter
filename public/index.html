@@ -19,7 +19,7 @@
 
     <!-- External JS -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-
+    <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="crossorigin="anonymous"></script>
     <!-- App JS -->
     <script type="text/javascript" src="/scripts/client.js"></script>
     <script type="text/javascript" src="/scripts/composer-char-counter.js"></script>
@@ -51,7 +51,7 @@
       <section class="new-tweet">
         <form action="/tweets/" method="POST">
           <label for="tweet-text">What are you humming about?</label>
-          <textarea name="text" id="tweet-text"></textarea>
+          <textarea class="new-tweet" name="text" id="tweet-text"></textarea>
           <div class="new-container">
             <button type="submit">Tweet</button> 
             <output name="counter" class="counter" for="tweet-text">140</output>

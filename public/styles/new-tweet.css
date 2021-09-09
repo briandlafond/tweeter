@@ -16,6 +16,7 @@ textarea {
   border-width: thick;
   outline: none;
   color: #545149;
+  padding-top: 20px;
 }
 
 div.new-container {
@@ -32,4 +33,15 @@ button {
 output {
   display: flex;
   justify-content: flex-end;
+}
+
+.counter {
+  font-family: 'Bungee', sans-serif;
+  color: #545149;
+  border-top: 10px;
+  float: right;
+}
+
+.counter.tweetTooLong {
+  color:red;
 }
