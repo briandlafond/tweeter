@@ -4,8 +4,11 @@ nav {
   height: 120px;
   padding: 1.5em;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   justify-content: space-between;
+  position: fixed;
+  top: 0;
+  width: 100%;
 }
 
 #logo {
@@ -18,9 +21,10 @@ nav {
 #new-tweet {
   display: flex;
   justify-content: flex-end;
+  flex-direction: column;
 }
 
-button {
+nav button {
   background-color: transparent;
   color: #FFFFFF;
   border-style: none;
