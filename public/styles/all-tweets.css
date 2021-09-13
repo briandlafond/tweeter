@@ -7,6 +7,11 @@ article.tweet {
   flex-direction: column;
 }
 
+section.tweets-container {
+  width: 85%;
+  margin: 0px 50px 50px 50px
+}
+
 article.tweet:hover {
   box-shadow: 10px 10px #ffa07a
 }
