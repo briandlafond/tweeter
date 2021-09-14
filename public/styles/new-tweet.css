@@ -46,3 +46,7 @@ output.counter {
 .counter.tweetTooLong {
   color:red;
 }
+
+p.error {
+  color: red
+}

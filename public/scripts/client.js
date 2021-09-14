@@ -75,13 +75,16 @@ $(document).ready(function() {
     event.preventDefault();
     const $form = $(this);
     const newTweetTextString = $form.children('textarea').val(); // .val() GETS text area
-
     if (newTweetTextString.length === 0) {
-      const $emptyFormAlert = $(alert("ITS EMPTY"));
-      return $emptyFormAlert;
+      $('.new-tweet p').append("<b>Error:</b> Tweets must contain minimum one character.");
+      setTimeout(() => {
+        $('.new-tweet p').slideDown();
+      }, 600);
     } else if (newTweetTextString.length > 140) {
-      const $formTooLongAlert = $(alert("TOO LONG"));
-      return $formTooLongAlert;
+      $('.new-tweet p').append("<b>Error:</b> Tweet maximum length is 140 characters.");
+      setTimeout(() => {
+        $('.new-tweet p').slideDown();
+      }, 600);
     } else {
       const tweet = $form.serialize();
       $.ajax({ 
@@ -90,11 +93,9 @@ $(document).ready(function() {
         data: tweet
       }).then(() => {
         loadTweets();
-        $form.children('textarea').val(""); //.val('') SETS text area to ' '
+        $form.children('textarea').val(""); //.val('') SETS text area back to ' '
       });
     }
-
-
   })
 
   const loadTweets = function() {
@@ -103,9 +104,5 @@ $(document).ready(function() {
         renderTweets(allTweets);
       });
   };
-
-  //loadTweets();
-
-
 
 });
