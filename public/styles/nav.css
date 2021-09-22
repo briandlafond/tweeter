@@ -2,7 +2,7 @@ nav {
   color: #fff;
   background-color: #4056A1;
   height: 120px;
-  padding: 1.5em;
+  padding: 20px;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -33,4 +33,12 @@ nav button {
   display: flex;
   justify-content: flex-end; 
   margin-right: 70px;
+}
+
+@media (max-width: 800px) {
+  nav {
+    background-color: #ffa07a;
+    background-image: url("https://www.transparenttextures.com/patterns/asfalt-dark.png");
+    height: 100px;
+  }
 }

@@ -1,6 +1,6 @@
 section.new-tweet {
   width: 85%;
-  margin: 50px 50px 50px 50px;
+  margin: 80px 30px 50px 30px;
   font-family: 'Source Sans Pro', sans-serif;
   display: flex;
   flex-direction: column;
@@ -50,3 +50,4 @@ output.counter {
 p.error {
   color: red
 }
+

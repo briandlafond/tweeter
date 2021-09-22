@@ -1,5 +1,5 @@
 body > header {
-  width: 100%;
+  width: 600px;
   height: 400px;
   background-color: #ffa07a;
   background-image: url("https://www.transparenttextures.com/patterns/asfalt-dark.png");
@@ -7,7 +7,8 @@ body > header {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  margin-top: 120px
+  margin-top: 170px;
+  margin-left: 50px;
 }
 
 body > header img {
@@ -16,4 +17,18 @@ body > header img {
 
 body > header h2 {
   margin: 5px;
+}
+
+@media all and (max-width: 800px) {
+  body > header {
+    flex-direction: column;
+    width: 100%;
+    position: fixed;
+    height: 350px;
+    margin-top: 80px;
+    margin-left: 0px;
+  } 
+  body > header h2 {
+    padding-bottom: 15px;
+  }
 }

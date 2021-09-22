@@ -8,6 +8,13 @@ $(document).ready(function() {
 
   timeago.render(document.querySelectorAll('.need_to_be_rendered'));
 
+// function to prevent XSS
+  const escape =  function(str) {
+    let div = document.createElement('div');
+    div.appendChild(document.createTextNode(str));
+    return div.innerHTML;
+  };
+
 // Test / driver code (temporary). Eventually will get this from the server.
   const data = [
     {
@@ -33,6 +40,7 @@ $(document).ready(function() {
     }
   ]
 
+
   const renderTweets = function(tweets) {
     for (let tweet of tweets) {
       const $tweet = createTweetElement(tweet);
@@ -48,7 +56,7 @@ $(document).ready(function() {
       <p class="username">${tweetObj.user.handle}</p>
     </header>
     <output>
-      <p class="tweet-message">${tweetObj.content.text}</p>
+      <p class="tweet-message">${escape(tweetObj.content.text)}</p>
     </output>
     <footer>
       <span class="need_to_be_rendered" datetime="">${timeago.format(tweetObj.created_at)}</span>
