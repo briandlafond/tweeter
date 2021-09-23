@@ -4,7 +4,7 @@
  * Reminder: Use (and do all your DOM work in) jQuery's document ready function
  */
 
-$(document).ready(function () {
+$(document).ready(function() {
 
   $(".new-tweet form").on("submit", onSubmit);
 
@@ -12,7 +12,7 @@ $(document).ready(function () {
 
 });
 
-const onSubmit = function (event) {
+const onSubmit = function(event) {
 
   event.preventDefault();
   const $form = $(this);
@@ -47,15 +47,15 @@ const onSubmit = function (event) {
 
 
 
-const escape = function (str) {
+const escape = function(str) {
   let div = document.createElement('div');
   div.appendChild(document.createTextNode(str));
   return div.innerHTML;
 };
 
-const createTweetElement = function (tweetObj) {
+const createTweetElement = function(tweetObj) {
 
-  const ago = timeago.format(tweetObj.created_at)
+  const ago = timeago.format(tweetObj.created_at);
 
   let $tweet = $(`<article>`).addClass("tweet");
 
@@ -84,7 +84,7 @@ const createTweetElement = function (tweetObj) {
   `;
 
   let tweetElement = $tweet.append(html);
-  
+
   return tweetElement;
 };
 
@@ -99,8 +99,6 @@ const renderTweets = function (tweets) {
 const loadTweets = function () {
   $.ajax('/tweets', { method: 'GET' })
     .then(function (allTweets) {
-      console.log(`allTweets ${allTweets}`)
-
       renderTweets(allTweets);
     });
 };
