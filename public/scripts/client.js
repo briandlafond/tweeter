@@ -4,30 +4,62 @@
  * Reminder: Use (and do all your DOM work in) jQuery's document ready function
  */
 
-$(document).ready(function() {
+$(document).ready(function () {
 
-  timeago.render(document.querySelectorAll('.need_to_be_rendered'));
+  $(".new-tweet form").on("submit", onSubmit);
 
-// function to prevent XSS
-  const escape =  function(str) {
-    let div = document.createElement('div');
-    div.appendChild(document.createTextNode(str));
-    return div.innerHTML;
-  };
+  loadTweets();
 
-// Test / driver code (temporary). Eventually will get this from the server.
+});
+
+const onSubmit = function (event) {
+
+  event.preventDefault();
+  const $form = $(this);
+  const data = $form.serialize();
+
+  const newTweetTextString = $form.children('textarea').val(); // .val() GETS text area
+  if (newTweetTextString.length === 0) {
+    $('.new-tweet p').append("<b>Error:</b> Tweets must contain minimum one character.");
+    setTimeout(() => {
+      $('.new-tweet p').slideDown("slow")
+        .then($('.new-tweet p').slideUp(3000));
+    }, 600);
+    return;
+  }
+
+  if (newTweetTextString.length > 140) {
+    $('.new-tweet p').append("<b>Error:</b> Tweet maximum length is 140 characters.");
+    setTimeout(() => {
+      $('.new-tweet p').slideDown("slow")
+        .then($('.new-tweet p').slideUp(3000));
+    }, 600);
+    return;
+  }
+
+  $.post("/tweets", data)
+    .then(() => {
+      loadTweets();
+      $form.children('textarea').val(""); // .val('') SETS text area back to ' '
+      $form[0].reset(); // .reset counter back to 140 
+    });
+};
 
 
-  const renderTweets = function(tweets) {
-    for (let tweet of tweets) {
-      const $tweet = createTweetElement(tweet);
-      $('.tweets-container').prepend($tweet);
-    }
-  };
 
-  const createTweetElement = function(tweetObj) {
-    let $tweet = $(`
-    <article name="tweet" class="tweet">
+const escape = function (str) {
+  let div = document.createElement('div');
+  div.appendChild(document.createTextNode(str));
+  return div.innerHTML;
+};
+
+const createTweetElement = function (tweetObj) {
+
+  const ago = timeago.format(tweetObj.created_at)
+
+  let $tweet = $(`<article>`).addClass("tweet");
+
+  let html = `    
     <header>
       <p class="name"><img src="${tweetObj.user.avatars}" width="30" height="30"></img> ${tweetObj.user.name}</p>
       <p class="username">${tweetObj.user.handle}</p>
@@ -36,7 +68,7 @@ $(document).ready(function() {
       <p class="tweet-message">${escape(tweetObj.content.text)}</p>
     </output>
     <footer>
-      <span class="need_to_be_rendered" datetime="">${timeago.format(tweetObj.created_at)}</span>
+      <span class="need_to_be_rendered" datetime="">${ago}</span>
       <div class="tweet-reaction">
         <button type="button" name="flag-tweet">
           <i class="fas fa-flag"></i>
@@ -49,44 +81,26 @@ $(document).ready(function() {
         </button>
       </div>
     </footer>
-    </article>
-    `);
-    return $tweet;
-  };
+  `;
 
-  $(".new-tweet form").submit(function(event) {
-    event.preventDefault();
-    const $form = $(this);
-    const newTweetTextString = $form.children('textarea').val(); // .val() GETS text area
-    if (newTweetTextString.length === 0) {
-      $('.new-tweet p').append("<b>Error:</b> Tweets must contain minimum one character.");
-      setTimeout(() => {
-        $('.new-tweet p').slideDown();
-      }, 600);
-    } else if (newTweetTextString.length > 140) {
-      $('.new-tweet p').append("<b>Error:</b> Tweet maximum length is 140 characters.");
-      setTimeout(() => {
-        $('.new-tweet p').slideDown();
-      }, 600);
-    } else {
-      const tweet = $form.serialize();
-      $.ajax({ 
-        url: "/tweets/",
-        method: 'POST', 
-        data: tweet
-      }).then(() => {
-        loadTweets();
-        $form.children('textarea').val(""); // .val('') SETS text area back to ' '
-        $form[0].reset(); // .reset counter back to 140 
-      });
-    }
-  })
+  let tweetElement = $tweet.append(html);
+  
+  return tweetElement;
+};
 
-  const loadTweets = function() {
-    $.ajax('/tweets/', { method: 'GET' })
-      .then(function(allTweets) {
-        renderTweets(allTweets);
-      });
-  };
+const renderTweets = function (tweets) {
+  $('#tweets-container').html('');
+  for (let tweet of tweets) {
+    const $tweet = createTweetElement(tweet);
+    $('#tweets-container').prepend($tweet);
+  }
+};
 
-});
+const loadTweets = function () {
+  $.ajax('/tweets', { method: 'GET' })
+    .then(function (allTweets) {
+      console.log(`allTweets ${allTweets}`)
+
+      renderTweets(allTweets);
+    });
+};
