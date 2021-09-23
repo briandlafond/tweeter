@@ -54,6 +54,7 @@
     </header>
 
     <!-- Page-specific (main) content here -->
+
     <main class="container">
       <section class="new-tweet">
         <p class="error"></p>
@@ -91,7 +92,47 @@
         </footer>
       </article>
     </section>
-    </main>
+  </main>
 
   </body>
 </html>
+
+
+    <!-- <main class="container">
+      <section class="new-tweet">
+        <p class="error"></p>
+        <form action="/tweets/" method="POST">
+          <label for="tweet-text">What are you humming about?</label>
+          <textarea class="new-tweet" name="text" id="tweet-text"></textarea>
+          <div class="new-container">
+            <button type="submit" class="submit-new-tweet">Tweet</button> 
+            <output name="counter" class="counter" for="tweet-text">140</output>
+          </div>
+        </form>
+      </section>
+      <section class="tweets-container">
+      <article name="tweet" class="tweet">
+        <header>
+          <p class="name"><i class="fas fa-user-astronaut"></i> Display Name</p>
+          <p class="username">@Username</p>
+        </header>
+        <output>
+          <p class="tweet-message">The tweet message goes here</p>
+        </output>
+        <footer>
+          <span class="need_to_be_rendered" datetime="2021-09-07T09:24:17Z"></span>
+          <div class="tweet-reaction">
+            <button type="button" name="flag-tweet">
+              <i class="fas fa-flag"></i>
+            </button>
+            <button type="button" name="retweet">
+              <i class="fas fa-retweet"></i>
+            </button>
+            <button type="button" name="like-tweet">
+              <i class="fas fa-heart"></i>
+            </button>
+          </div>
+        </footer>
+      </article>
+    </section>
+  </main>
