@@ -5,13 +5,13 @@ Tweeter is a simple, single-page Twitter clone that allows users to post a tweet
 ## Final Product
 
 - Main Page - Desktop
-
+["screenshot of main page - desktop"](https://github.com/briandlafond/tweeter/blob/master/docs/Main%20Page%20Desktop.png?raw=true)
 - Main Page - Tablet/Mobile
-
+["screenshot of main page - tablet/mobile"](https://github.com/briandlafond/tweeter/blob/master/docs/Main%20Page%20Tablet:Mobile.png?raw=true)
 - Main Page - Error Message
-
+["screenshot of main page - error"](https://github.com/briandlafond/tweeter/blob/master/docs/Error%20Message.png?raw=true)
 - Tweet on Hover
-
+["screenshot of tweet on hover"](https://github.com/briandlafond/tweeter/blob/master/docs/Tweet%20on%20Hover.png?raw=true)
 
 ## Getting Started
 
