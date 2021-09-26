@@ -19,6 +19,7 @@ const onSubmit = function(event) {
   const data = $form.serialize();
 
   const newTweetTextString = $form.children('textarea').val(); // .val() GETS text area
+
   if (newTweetTextString.length === 0) {
     $('.new-tweet p').append("<b>Error:</b> Tweets must contain minimum one character.");
     setTimeout(() => {
@@ -44,8 +45,6 @@ const onSubmit = function(event) {
       $form[0].reset(); // .reset counter back to 140 
     });
 };
-
-
 
 const escape = function(str) {
   let div = document.createElement('div');

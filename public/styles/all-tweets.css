@@ -1,3 +1,10 @@
+#tweets-container {
+  width: 90%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
 article.tweet {
   width: 100%;
   margin-top: 50px;
@@ -5,11 +12,7 @@ article.tweet {
   border: solid;
   display: flex;
   flex-direction: column;
-}
-
-section.tweets-container {
-  width: 85%;
-  margin: 0px 50px 50px 50px
+  justify-content: center;
 }
 
 article.tweet:hover {

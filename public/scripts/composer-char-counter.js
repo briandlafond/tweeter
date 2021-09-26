@@ -5,16 +5,18 @@ $(document).ready(function() {
     let form = input.closest('form');    
     let counter = form.find('.counter');
     let newTweet = $(this).val().length;
-    let charactersLeft = 140 - newTweet;    
+    let maxLength = 140;
+    let charactersLeft = maxLength - newTweet;    
     counter.html(charactersLeft);
+    counter.hmtl(maxLength);
     if (newTweet > 140) {
       counter.addClass('tweetTooLong');
     } else if (newTweet <= 140) {
       counter.removeClass('tweetTooLong');
     }
+
   });
 
 });
-
 
 

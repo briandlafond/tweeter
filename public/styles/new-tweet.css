@@ -1,10 +1,10 @@
 section.new-tweet {
-  width: 85%;
-  margin: 80px 30px 50px 30px;
+  width: 90%;
+  margin-top: 80px; 
   font-family: 'Source Sans Pro', sans-serif;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  /* justify-content: center; */
 }
 
 textarea {
