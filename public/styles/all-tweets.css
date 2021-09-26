@@ -28,7 +28,7 @@ article.tweet header {
 }
 
 header p.username {
-  color: lightgray
+  color: rgb(151, 148, 148)
 }
 
 p.tweet-message {

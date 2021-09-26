@@ -24,7 +24,7 @@ const onSubmit = function(event) {
     $('.new-tweet p').append("<b>Error:</b> Tweets must contain minimum one character.");
     setTimeout(() => {
       $('.new-tweet p').slideDown("slow")
-        .then($('.new-tweet p').slideUp(3000));
+        .then($('.new-tweet p').slideUp(4000));
     }, 600);
     return;
   }
@@ -33,7 +33,7 @@ const onSubmit = function(event) {
     $('.new-tweet p').append("<b>Error:</b> Tweet maximum length is 140 characters.");
     setTimeout(() => {
       $('.new-tweet p').slideDown("slow")
-        .then($('.new-tweet p').slideUp(3000));
+        .then($('.new-tweet p').slideUp(4000));
     }, 600);
     return;
   }
