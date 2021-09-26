@@ -41,8 +41,9 @@ const onSubmit = function(event) {
   $.post("/tweets", data)
     .then(() => {
       loadTweets();
-      $form.children('textarea').val(""); // .val('') SETS text area back to ' '
-      $form[0].reset(); // .reset counter back to 140 
+      $form.children('textarea').val("");
+      $form[0].reset(); 
+      $('.counter').html(140);
     });
 };
 

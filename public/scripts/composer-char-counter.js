@@ -8,7 +8,6 @@ $(document).ready(function() {
     let maxLength = 140;
     let charactersLeft = maxLength - newTweet;    
     counter.html(charactersLeft);
-    counter.hmtl(maxLength);
     if (newTweet > 140) {
       counter.addClass('tweetTooLong');
     } else if (newTweet <= 140) {
